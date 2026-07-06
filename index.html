@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verkehrsmittel im Alltag - Probleme und Loesungen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="deck-shell">
+    <header class="deck-controls" aria-label="Praesentationssteuerung">
+      <button class="nav-button" id="prevBtn" type="button" aria-label="Zurueck">‹</button>
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <button class="nav-button" id="nextBtn" type="button" aria-label="Weiter">›</button>
+      <button class="script-toggle" id="scriptToggle" type="button" aria-expanded="false">Show Script</button>
+      <button class="print-button" id="printBtn" type="button">PDF / Print</button>
+    </header>
+
+    <main class="presentation" id="presentation">
+      <section class="slide title-slide active" data-section="Titel" data-steps="0" aria-label="Folie 1">
+        <div class="topbar">
+          <span>01 / 12</span>
+          <span>Titel</span>
+        </div>
+        <!-- Image prompt:
+        A cheerful modern European city street with bus, metro sign, bicycle lane, taxi, walking people, sunny morning, clean educational style, bright colors, professional presentation background, no text, 16:9. Suggested file: assets/images/slide01-city-transport.jpg
+        -->
+        <div class="hero-scene image-card" data-image-ref="assets/images/slide01-city-transport.jpg">
+          <svg viewBox="0 0 1200 675" role="img" aria-label="Moderne Stadt mit Bus, Taxi, Fahrrad und Fussgaengern">
+            <defs>
+              <linearGradient id="skyHero" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#bfe6ff"/>
+                <stop offset="1" stop-color="#f8fbff"/>
+              </linearGradient>
+              <linearGradient id="roadHero" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#48546a"/>
+                <stop offset="1" stop-color="#2f3c52"/>
+              </linearGradient>
+            </defs>
+            <rect width="1200" height="675" fill="url(#skyHero)"/>
+            <circle cx="1040" cy="105" r="54" fill="#f7b731" opacity=".95"/>
+            <g opacity=".96">
+              <rect x="65" y="170" width="150" height="275" rx="12" fill="#dfe8f5"/>
+              <rect x="235" y="110" width="185" height="335" rx="14" fill="#cbd8e8"/>
+              <rect x="450" y="150" width="130" height="295" rx="12" fill="#e9eef7"/>
+              <rect x="910" y="135" width="190" height="310" rx="14" fill="#ccd9e7"/>
+              <rect x="725" y="190" width="135" height="255" rx="12" fill="#e7eef8"/>
+            </g>
+            <g fill="#8fa4bd" opacity=".55">
+              <rect x="93" y="205" width="28" height="42" rx="4"/><rect x="144" y="205" width="28" height="42" rx="4"/>
+              <rect x="278" y="150" width="34" height="48" rx="4"/><rect x="342" y="150" width="34" height="48" rx="4"/>
+              <rect x="942" y="178" width="34" height="48" rx="4"/><rect x="1012" y="178" width="34" height="48" rx="4"/>
+            </g>
+            <path d="M0 455 C260 430 460 472 680 444 C870 420 1030 438 1200 405 L1200 675 L0 675 Z" fill="url(#roadHero)"/>
+            <path d="M0 525 C310 504 590 532 1200 490" stroke="#f7b731" stroke-width="8" stroke-dasharray="54 40" opacity=".85"/>
+            <g class="route-line">
+              <path d="M70 392 C220 324 330 418 477 355 C625 292 742 382 887 305 C987 254 1070 279 1140 225" fill="none" stroke="#1f9d8a" stroke-width="7" stroke-linecap="round" stroke-dasharray="18 24"/>
+            </g>
+            <g class="vehicle vehicle-bus" transform="translate(278 398)">
+              <rect x="0" y="0" width="275" height="96" rx="22" fill="#1f9d8a"/>
+              <rect x="22" y="20" width="52" height="34" rx="6" fill="#e7f7f3"/>
+              <rect x="88" y="20" width="52" height="34" rx="6" fill="#e7f7f3"/>
+              <rect x="154" y="20" width="52" height="34" rx="6" fill="#e7f7f3"/>
+              <rect x="215" y="18" width="42" height="62" rx="7" fill="#d9f2ec"/>
+              <circle cx="64" cy="98" r="22" fill="#172033"/>
+              <circle cx="216" cy="98" r="22" fill="#172033"/>
+              <text x="25" y="78" font-size="24" font-weight="800" fill="#fff">BUS</text>
+            </g>
+            <g class="vehicle vehicle-taxi" transform="translate(690 430)">
+              <rect x="0" y="28" width="188" height="54" rx="19" fill="#f7b731"/>
+              <path d="M40 28 L70 0 H126 L158 28 Z" fill="#ffd56a"/>
+              <rect x="76" y="8" width="44" height="20" rx="4" fill="#fff4c8"/>
+              <circle cx="46" cy="84" r="18" fill="#172033"/>
+              <circle cx="145" cy="84" r="18" fill="#172033"/>
+            </g>
+            <g class="vehicle bike" transform="translate(925 480)">
+              <circle cx="28" cy="55" r="27" fill="none" stroke="#172033" stroke-width="7"/>
+              <circle cx="112" cy="55" r="27" fill="none" stroke="#172033" stroke-width="7"/>
+              <path d="M28 55 L61 20 L82 55 L48 55 L69 55 L112 55" fill="none" stroke="#1f9d8a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="66" cy="8" r="14" fill="#f7b731"/>
+              <path d="M65 23 L58 42 L82 55" fill="none" stroke="#172033" stroke-width="7" stroke-linecap="round"/>
+            </g>
+            <g class="cone-mascot" transform="translate(1030 415)">
+              <path d="M40 0 L72 95 H8 Z" fill="#e85d4f"/>
+              <path d="M30 32 H53 L61 55 H22 Z" fill="#fff"/>
+              <rect x="0" y="92" width="80" height="16" rx="8" fill="#172033"/>
+              <circle cx="31" cy="25" r="4" fill="#172033"/>
+              <circle cx="49" cy="25" r="4" fill="#172033"/>
+              <path d="M33 41 Q40 47 48 41" stroke="#172033" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="title-card glass">
+          <div class="flag-accent"><span></span><span></span><span></span></div>
+          <p class="eyebrow">Netzwerk neu A2.2 - Kapitel 7</p>
+          <h1>Verkehrsmittel im Alltag</h1>
+          <h2>Probleme und Lösungen</h2>
+          <p class="presenters">Präsentation von Attia und Lili</p>
+          <p class="lead">Wie kommen wir jeden Tag zum Deutschkurs, zur Arbeit oder nach Hause?</p>
+        </div>
+      </section>
+
+      <section class="slide entry-slide" data-section="Einstieg" data-steps="3" aria-label="Folie 2">
+        <div class="topbar">
+          <span>02 / 12</span>
+          <span>Einstieg</span>
+        </div>
+        <div class="slide-heading">
+          <p class="eyebrow">Unsere tägliche Frage</p>
+          <h2>Wie kommst du zum Deutschkurs?</h2>
+        </div>
+        <div class="two-column">
+          <div class="dialogue-stack">
+            <div class="bubble laila reveal" data-step="1"><strong>Laila:</strong> Wie kommst du jeden Tag zum Deutschkurs?</div>
+            <div class="bubble attia reveal" data-step="2"><strong>Attia:</strong> Ich fahre meistens mit dem Taxi, weil es schnell und bequem ist. Aber es ist teuer.</div>
+            <div class="bubble laila reveal" data-step="3"><strong>Laila:</strong> Ich nehme oft den Bus. Er ist günstiger, aber manchmal verspätet.</div>
+          </div>
+          <!-- Image prompt:
+          Two adult German learners at a clean European bus stop. One looks at a phone timetable and one points to a bus and taxi in the street, friendly classroom style, bright colors, no text, 16:9. Suggested file: assets/images/slide02-bus-stop-students.jpg
+          -->
+          <div class="image-card scene-card" data-image-ref="assets/images/slide02-bus-stop-students.jpg">
+            <svg viewBox="0 0 620 420" role="img" aria-label="Zwei Lernende an einer Haltestelle">
+              <rect width="620" height="420" rx="28" fill="#e7f7f3"/>
+              <path d="M0 308 C115 286 220 318 329 297 C434 276 520 292 620 271 L620 420 L0 420 Z" fill="#d8e3ef"/>
+              <rect x="50" y="58" width="260" height="222" rx="22" fill="#ffffff" opacity=".92"/>
+              <rect x="76" y="82" width="208" height="30" rx="10" fill="#1f9d8a"/>
+              <rect x="86" y="130" width="80" height="110" rx="12" fill="#c8d9ea"/>
+              <rect x="184" y="130" width="80" height="110" rx="12" fill="#c8d9ea"/>
+              <rect x="95" y="32" width="16" height="300" rx="8" fill="#172033"/>
+              <rect x="330" y="195" width="175" height="70" rx="18" fill="#1f9d8a"/>
+              <rect x="351" y="211" width="42" height="25" rx="5" fill="#e7f7f3"/>
+              <rect x="407" y="211" width="42" height="25" rx="5" fill="#e7f7f3"/>
+              <circle cx="370" cy="270" r="18" fill="#172033"/>
+              <circle cx="466" cy="270" r="18" fill="#172033"/>
+              <g transform="translate(210 210)">
+                <circle cx="32" cy="0" r="24" fill="#f0b38f"/>
+                <path d="M10 45 Q32 23 56 45 L66 128 H0 Z" fill="#3762d1"/>
+                <rect x="49" y="38" width="42" height="58" rx="8" fill="#172033"/>
+                <rect x="54" y="44" width="32" height="43" rx="5" fill="#e7f7f3"/>
+              </g>
+              <g transform="translate(335 214)">
+                <circle cx="32" cy="0" r="24" fill="#d8956f"/>
+                <path d="M7 45 Q32 23 58 45 L68 130 H0 Z" fill="#f7b731"/>
+                <path d="M60 54 Q112 35 145 17" stroke="#172033" stroke-width="9" fill="none" stroke-linecap="round"/>
+              </g>
+              <g class="cone-mascot tiny" transform="translate(545 306)">
+                <path d="M20 0 L36 48 H4 Z" fill="#e85d4f"/>
+                <path d="M15 16 H27 L31 28 H10 Z" fill="#fff"/>
+                <rect x="0" y="46" width="40" height="8" rx="4" fill="#172033"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide vocab-slide" data-section="Wortschatz" data-steps="0" aria-label="Folie 3">
+        <div class="topbar">
+          <span>03 / 12</span>
+          <span>Wortschatz</span>
+        </div>
+        <div class="slide-heading">
+          <p class="eyebrow">Verkehrsmittel schnell erklärt</p>
+          <h2>Welche Wörter kennen wir?</h2>
+        </div>
+        <!-- Image prompt:
+        Professional icon and photo grid of bus, subway, tram, train, car, taxi, bicycle, and walking in a bright classroom-friendly European mobility style, no logos, no text, 16:9. Suggested file: assets/images/slide03-transport-icons.jpg
+        -->
+        <div class="transport-grid image-card" data-image-ref="assets/images/slide03-transport-icons.jpg">
+          <article class="transport-card"><span class="icon bus-icon"></span><strong>der Bus</strong></article>
+          <article class="transport-card"><span class="icon metro-icon">U</span><strong>die U-Bahn</strong></article>
+          <article class="transport-card"><span class="icon tram-icon"></span><strong>die Straßenbahn</strong></article>
+          <article class="transport-card"><span class="icon train-icon"></span><strong>der Zug</strong></article>
+          <article class="transport-card"><span class="icon car-icon"></span><strong>das Auto</strong></article>
+          <article class="transport-card"><span class="icon taxi-icon"></span><strong>das Taxi</strong></article>
+          <article class="transport-card"><span class="icon cycle-icon"></span><strong>das Fahrrad</strong></article>
+          <article class="transport-card"><span class="icon walk-icon"></span><strong>zu Fuß gehen</strong></article>
+        </div>
+        <p class="example-card">Ich fahre oft mit dem Taxi, weil es schnell ist.</p>
+      </section>
+
+      <section class="slide public-slide" data-section="Vorwissen" data-steps="2" aria-label="Folie 4">
+        <div class="topbar">
+          <span>04 / 12</span>
+          <span>Öffentliche Verkehrsmittel</span>
+        </div>
+        <div class="slide-heading">
+          <p class="eyebrow">Bus und Bahn</p>
+          <h2>Warum sind sie oft eine gute Idee?</h2>
+        </div>
+        <div class="split-large">
+          <div class="solution-panel reveal visible" data-step="1">
+            <!-- Image prompt:
+            Clean modern train and bus interior with calm passengers, bright daylight, friendly European public transport feeling, no brand names, no text. Suggested file: assets/images/slide04-public-transport.jpg
+            -->
+            <div class="mini-scene calm" data-image-ref="assets/images/slide04-public-transport.jpg">
+              <svg viewBox="0 0 520 245" role="img" aria-label="Ruhiger Zug oder Bus">
+                <rect width="520" height="245" rx="22" fill="#e7f7f3"/>
+                <rect x="30" y="35" width="460" height="150" rx="22" fill="#fff"/>
+                <rect x="62" y="58" width="82" height="70" rx="10" fill="#bfe6ff"/>
+                <rect x="164" y="58" width="82" height="70" rx="10" fill="#bfe6ff"/>
+                <rect x="266" y="58" width="82" height="70" rx="10" fill="#bfe6ff"/>
+                <rect x="368" y="58" width="82" height="70" rx="10" fill="#bfe6ff"/>
+                <path d="M50 165 H470" stroke="#1f9d8a" stroke-width="14" stroke-linecap="round"/>
+                <g transform="translate(120 154)"><circle cx="0" cy="0" r="13" fill="#f0b38f"/><path d="M-22 54 Q0 18 22 54" fill="#3762d1"/></g>
+                <g transform="translate(330 154)"><circle cx="0" cy="0" r="13" fill="#d8956f"/><path d="M-22 54 Q0 18 22 54" fill="#f7b731"/></g>
+              </svg>
+            </div>
+            <div class="info-card solution-card visible">
+              <span class="label solution-label">Vorteil / Lösung</span>
+              <ul>
+                <li>günstig</li>
+                <li>praktisch</li>
+                <li>besser für die Umwelt</li>
+                <li>kein Parkplatz nötig</li>
+              </ul>
+            </div>
+          </div>
+          <div class="problem-panel reveal from-right" data-step="2">
+            <!-- Image prompt:
+            Small teaser scene with traffic and cars in a European city, bright but busy, no logos, no text. Suggested file: assets/images/slide04-traffic-question.jpg
+            -->
+            <div class="mini-scene stress" data-image-ref="assets/images/slide05-traffic-jam.jpg">
+              <svg viewBox="0 0 520 245" role="img" aria-label="Verkehr und Autos">
+                <rect width="520" height="245" rx="22" fill="#fff1ef"/>
+                <rect x="0" y="154" width="520" height="91" fill="#536173"/>
+                <path d="M22 202 H498" stroke="#ffd56a" stroke-width="7" stroke-dasharray="36 28"/>
+                <g transform="translate(70 132)"><rect width="150" height="52" rx="18" fill="#e85d4f"/><circle cx="38" cy="55" r="17" fill="#172033"/><circle cx="116" cy="55" r="17" fill="#172033"/></g>
+                <g transform="translate(268 126)"><rect width="170" height="58" rx="20" fill="#f7b731"/><circle cx="42" cy="60" r="17" fill="#172033"/><circle cx="129" cy="60" r="17" fill="#172033"/></g>
+                <circle cx="446" cy="58" r="34" fill="#e85d4f"/>
+              </svg>
+            </div>
+            <div class="question-card">Warum fahren nicht alle mit Bus und Bahn?</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide problem-slide" data-section="Problem 1" data-steps="2" aria-label="Folie 5">
+        <div class="topbar"><span>05 / 12</span><span>Stau</span></div>
+        <div class="problem-solution-layout">
+          <div class="side solution-side">
+            <p class="side-kicker">Jetzt kommt die Lösung</p>
+            <!-- Image prompt:
+            Calm bike lane and bus lane in a bright European city street, people using public transport, green street, sunny, professional classroom-friendly style, no text. Suggested file: assets/images/slide05-bike-bus-solution.jpg
+            -->
+            <div class="image-card mobility-scene green-scene" data-image-ref="assets/images/slide05-bike-bus-solution.jpg"></div>
+            <article class="info-card solution-card reveal from-left" data-step="2">
+              <span class="label solution-label">Attia - Lösung</span>
+              <h3>Mehr klug fahren</h3>
+              <ul>
+                <li>Mehr Bus und Bahn benutzen.</li>
+                <li>Mehr Fahrradwege bauen.</li>
+                <li>Fahrgemeinschaften machen.</li>
+              </ul>
+              <p class="mini-grammar">Deshalb brauchen wir gute Lösungen.</p>
+            </article>
+          </div>
+          <div class="side problem-side">
+            <p class="side-kicker">Problem zuerst</p>
+            <!-- Image prompt:
+            Funny but professional traffic jam in a busy European city, many cars and taxis, red traffic lights, one stressed driver, strong delay mood, bright classroom-friendly colors, no text. Suggested file: assets/images/slide05-traffic-jam.jpg
+            -->
+            <div class="image-card mobility-scene traffic-scene" data-image-ref="assets/images/slide05-traffic-jam.jpg"></div>
+            <article class="info-card problem-card reveal from-right" data-step="1">
+              <span class="label problem-label">Laila - Problem</span>
+              <h3>Stau</h3>
+              <ul>
+                <li>Es gibt viel Verkehr.</li>
+                <li>Viele Autos und Taxis stehen im Stau.</li>
+                <li>Man kommt zu spät.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide problem-slide" data-section="Problem 2" data-steps="2" aria-label="Folie 6">
+        <div class="topbar"><span>06 / 12</span><span>Volle U-Bahn</span></div>
+        <div class="problem-solution-layout">
+          <div class="side solution-side">
+            <p class="side-kicker">Jetzt kommt die Lösung</p>
+            <!-- Image prompt:
+            More subway trains arriving at a clean station, timetable screen, calm passengers, bright modern European transit style, no logos, no text. Suggested file: assets/images/slide06-more-trains.jpg
+            -->
+            <div class="image-card mobility-scene train-solution-scene" data-image-ref="assets/images/slide06-more-trains.jpg"></div>
+            <article class="info-card solution-card reveal from-left" data-step="2">
+              <span class="label solution-label">Attia - Lösung</span>
+              <h3>Besser planen</h3>
+              <ul>
+                <li>Mehr Züge zu Stoßzeiten.</li>
+                <li>Bessere Fahrpläne.</li>
+                <li>Früher losfahren.</li>
+              </ul>
+              <p class="mini-grammar">Trotzdem ist die U-Bahn schnell.</p>
+            </article>
+          </div>
+          <div class="side problem-side">
+            <p class="side-kicker">Problem zuerst</p>
+            <!-- Image prompt:
+            Crowded subway train at rush hour, people standing, funny but not scary, clear full train feeling, bright classroom-friendly style, no text. Suggested file: assets/images/slide06-crowded-subway.jpg
+            -->
+            <div class="image-card mobility-scene crowded-scene" data-image-ref="assets/images/slide06-crowded-subway.jpg"></div>
+            <article class="info-card problem-card reveal from-right" data-step="1">
+              <span class="label problem-label">Laila - Problem</span>
+              <h3>Volle U-Bahn</h3>
+              <ul>
+                <li>Die U-Bahn ist voll.</li>
+                <li>Man findet keinen Sitzplatz.</li>
+                <li>Das ist laut und unbequem.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide problem-slide" data-section="Problem 3" data-steps="2" aria-label="Folie 7">
+        <div class="topbar"><span>07 / 12</span><span>Verspätung</span></div>
+        <div class="problem-solution-layout">
+          <div class="side solution-side">
+            <p class="side-kicker">Jetzt kommt die Lösung</p>
+            <!-- Image prompt:
+            Smartphone with live timetable app, bus arriving at a clean modern station, friendly students, bright European city, no logos, no text. Suggested file: assets/images/slide07-live-app.jpg
+            -->
+            <div class="image-card mobility-scene app-scene" data-image-ref="assets/images/slide07-live-app.jpg"></div>
+            <article class="info-card solution-card reveal from-left" data-step="2">
+              <span class="label solution-label">Attia - Lösung</span>
+              <h3>Eine App hilft</h3>
+              <ul>
+                <li>Live-App benutzen.</li>
+                <li>Früher losgehen.</li>
+                <li>Mehr Busse einsetzen.</li>
+              </ul>
+              <p class="mini-grammar">Wenn der Bus verspätet ist, kann man eine App benutzen.</p>
+            </article>
+          </div>
+          <div class="side problem-side">
+            <p class="side-kicker">Problem zuerst</p>
+            <!-- Image prompt:
+            Student waiting at a bus stop, bus is late, clock delay, light rain or cold weather, tired but friendly face, classroom-friendly style, no text. Suggested file: assets/images/slide07-late-bus-stop.jpg
+            -->
+            <div class="image-card mobility-scene late-scene" data-image-ref="assets/images/slide07-late-bus-stop.jpg"></div>
+            <article class="info-card problem-card reveal from-right" data-step="1">
+              <span class="label problem-label">Laila - Problem</span>
+              <h3>Verspätung</h3>
+              <ul>
+                <li>Der Bus kommt zu spät.</li>
+                <li>Der Fahrplan stimmt nicht immer.</li>
+                <li>Man wartet lange.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide problem-slide" data-section="Problem 4" data-steps="2" aria-label="Folie 8">
+        <div class="topbar"><span>08 / 12</span><span>Kosten</span></div>
+        <div class="problem-solution-layout">
+          <div class="side solution-side">
+            <p class="side-kicker">Jetzt kommt die Lösung</p>
+            <!-- Image prompt:
+            Park and Ride area outside a European city, car parked near train station, person taking train, clean and sunny, no brand names, no text. Suggested file: assets/images/slide08-park-and-ride.jpg
+            -->
+            <div class="image-card mobility-scene parkride-scene" data-image-ref="assets/images/slide08-park-and-ride.jpg"></div>
+            <article class="info-card solution-card reveal from-left" data-step="2">
+              <span class="label solution-label">Attia - Lösung</span>
+              <h3>Günstiger fahren</h3>
+              <ul>
+                <li>Bus oder Bahn nehmen.</li>
+                <li>Park & Ride benutzen.</li>
+                <li>Kurze Wege zu Fuß gehen.</li>
+              </ul>
+              <p class="mini-humor">Die Füße sind kostenlos und brauchen kein Benzin!</p>
+            </article>
+          </div>
+          <div class="side problem-side">
+            <p class="side-kicker">Problem zuerst</p>
+            <!-- Image prompt:
+            Taxi meter, expensive taxi, city center parking price sign, no parking place, bright professional classroom-friendly style, no logos, no text. Suggested file: assets/images/slide08-expensive-taxi-parking.jpg
+            -->
+            <div class="image-card mobility-scene taxi-cost-scene" data-image-ref="assets/images/slide08-expensive-taxi-parking.jpg"></div>
+            <article class="info-card problem-card reveal from-right" data-step="1">
+              <span class="label problem-label">Laila - Problem</span>
+              <h3>Taxi, Auto und Kosten</h3>
+              <ul>
+                <li>Das Taxi ist teuer.</li>
+                <li>Parkplätze sind teuer.</li>
+                <li>Man sucht lange.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide problem-slide" data-section="Problem 5" data-steps="2" aria-label="Folie 9">
+        <div class="topbar"><span>09 / 12</span><span>Umwelt</span></div>
+        <div class="problem-solution-layout">
+          <div class="side solution-side">
+            <p class="side-kicker">Jetzt kommt die Lösung</p>
+            <!-- Image prompt:
+            Green street with bicycles, electric bus, trees, walking people, sunny sky, optimistic European city, bright classroom-friendly colors, no brand names, no text. Suggested file: assets/images/slide09-green-mobility.jpg
+            -->
+            <div class="image-card mobility-scene green-city-scene" data-image-ref="assets/images/slide09-green-mobility.jpg"></div>
+            <article class="info-card solution-card reveal from-left" data-step="2">
+              <span class="label solution-label">Attia - Lösung</span>
+              <h3>Saubere Luft</h3>
+              <ul>
+                <li>Fahrrad fahren.</li>
+                <li>Zu Fuß gehen.</li>
+                <li>Elektrobusse benutzen.</li>
+              </ul>
+              <p class="mini-grammar">Ich fahre Fahrrad, weil es gesund und umweltfreundlich ist.</p>
+            </article>
+          </div>
+          <div class="side problem-side">
+            <p class="side-kicker">Problem zuerst</p>
+            <!-- Image prompt:
+            Cars and taxis with grey pollution in a noisy city, tired sky but still classroom-friendly and bright enough, no logos, no text. Suggested file: assets/images/slide09-pollution-cars.jpg
+            -->
+            <div class="image-card mobility-scene pollution-scene" data-image-ref="assets/images/slide09-pollution-cars.jpg"></div>
+            <article class="info-card problem-card reveal from-right" data-step="1">
+              <span class="label problem-label">Laila - Problem</span>
+              <h3>Umwelt und Luft</h3>
+              <ul>
+                <li>Viele Autos machen schlechte Luft.</li>
+                <li>Die Stadt wird laut.</li>
+                <li>Das ist schlecht für Menschen und Natur.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide compare-slide" data-section="Vergleich" data-steps="0" aria-label="Folie 10">
+        <div class="topbar"><span>10 / 12</span><span>Vergleich</span></div>
+        <div class="slide-heading">
+          <p class="eyebrow">Was passt zu mir?</p>
+          <h2>Jede Situation ist anders.</h2>
+        </div>
+        <!-- Image prompt:
+        Beautiful comparison dashboard for taxi, subway, car, bicycle, and walking, clean educational design, modern European mobility tone, high contrast, no logos. Suggested file: assets/images/slide10-comparison-city.jpg
+        -->
+        <div class="compare-grid image-card" data-image-ref="assets/images/slide10-comparison-city.jpg">
+          <article class="compare-card"><span class="icon taxi-icon"></span><h3>Taxi</h3><p>schnell, bequem</p><small>aber teuer</small></article>
+          <article class="compare-card"><span class="icon metro-icon">U</span><h3>U-Bahn</h3><p>schnell, günstig</p><small>aber manchmal voll</small></article>
+          <article class="compare-card"><span class="icon car-icon"></span><h3>Auto</h3><p>bequem, flexibel</p><small>aber teuer</small></article>
+          <article class="compare-card"><span class="icon cycle-icon"></span><h3>Fahrrad</h3><p>gesund, billig</p><small>aber schlecht bei Regen</small></article>
+          <article class="compare-card"><span class="icon walk-icon"></span><h3>Zu Fuß</h3><p>kostenlos, gesund</p><small>aber langsam</small></article>
+        </div>
+        <p class="conclusion">Es gibt nicht das perfekte Verkehrsmittel für alle Situationen.</p>
+      </section>
+
+      <section class="slide summary-slide" data-section="Zusammenfassung" data-steps="0" aria-label="Folie 11">
+        <div class="topbar"><span>11 / 12</span><span>Zusammenfassung</span></div>
+        <div class="slide-heading">
+          <p class="eyebrow">Probleme und Lösungen</p>
+          <h2>Von Stress zu Plan</h2>
+        </div>
+        <!-- Image prompt:
+        Professional infographic with red problem column on the right, green solution column on the left, small bridge or arrow in the center, modern classroom presentation design. Suggested file: assets/images/slide11-summary-green-city.jpg
+        -->
+        <div class="summary-board image-card" data-image-ref="assets/images/slide11-summary-green-city.jpg">
+          <div class="summary-column solution-summary">
+            <h3>Lösungen</h3>
+            <p>Bus und Bahn</p>
+            <p>mehr Züge und Busse</p>
+            <p>Live-App</p>
+            <p>Park & Ride</p>
+            <p>Fahrrad und Elektrobusse</p>
+          </div>
+          <div class="bridge">
+            <span></span>
+            <strong>→</strong>
+            <span></span>
+          </div>
+          <div class="summary-column problem-summary">
+            <h3>Probleme</h3>
+            <p>Stau</p>
+            <p>volle U-Bahn</p>
+            <p>Verspätung</p>
+            <p>hohe Kosten</p>
+            <p>schlechte Luft</p>
+          </div>
+        </div>
+        <p class="conclusion">Wir wählen das passende Verkehrsmittel für die passende Situation.</p>
+      </section>
+
+      <section class="slide end-slide" data-section="Abschluss" data-steps="0" aria-label="Folie 12">
+        <div class="topbar"><span>12 / 12</span><span>Abschluss</span></div>
+        <!-- Image prompt:
+        Beautiful green modern European city with bus, train, bicycle lane, walking people, sunny sky, optimistic mood, clean educational style, no text, 16:9. Suggested file: assets/images/slide12-thank-you-city.jpg
+        -->
+        <div class="hero-scene image-card end-hero" data-image-ref="assets/images/slide12-thank-you-city.jpg">
+          <svg viewBox="0 0 1200 675" role="img" aria-label="Grüne moderne Stadt">
+            <rect width="1200" height="675" fill="#e7f7f3"/>
+            <circle cx="1010" cy="110" r="58" fill="#f7b731"/>
+            <path d="M0 430 C200 380 330 435 520 390 C760 335 955 410 1200 330 L1200 675 L0 675 Z" fill="#b9e6d8"/>
+            <rect x="100" y="170" width="140" height="245" rx="16" fill="#ffffff"/>
+            <rect x="275" y="125" width="170" height="300" rx="16" fill="#d8e3ef"/>
+            <rect x="800" y="160" width="215" height="265" rx="18" fill="#ffffff"/>
+            <path d="M0 510 H1200" stroke="#2f3c52" stroke-width="105"/>
+            <path d="M0 505 H1200" stroke="#f7b731" stroke-width="7" stroke-dasharray="44 38"/>
+            <g transform="translate(295 422)">
+              <rect width="270" height="92" rx="24" fill="#1f9d8a"/>
+              <rect x="27" y="21" width="55" height="34" rx="6" fill="#e7f7f3"/>
+              <rect x="98" y="21" width="55" height="34" rx="6" fill="#e7f7f3"/>
+              <rect x="169" y="21" width="55" height="34" rx="6" fill="#e7f7f3"/>
+              <circle cx="68" cy="94" r="21" fill="#172033"/><circle cx="210" cy="94" r="21" fill="#172033"/>
+            </g>
+            <g class="bike" transform="translate(735 456)">
+              <circle cx="28" cy="55" r="27" fill="none" stroke="#172033" stroke-width="7"/>
+              <circle cx="112" cy="55" r="27" fill="none" stroke="#172033" stroke-width="7"/>
+              <path d="M28 55 L61 20 L82 55 L48 55 L69 55 L112 55" fill="none" stroke="#1f9d8a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-overlay soft"></div>
+        <div class="final-card glass">
+          <div class="flag-accent"><span></span><span></span><span></span></div>
+          <h2>Danke fürs Zuhören!</h2>
+          <p class="presenters">Präsentation von Attia und Lili</p>
+          <p>Jedes Verkehrsmittel hat Vorteile und Nachteile.</p>
+          <p>Wichtig ist: sichere, günstige und umweltfreundliche Lösungen.</p>
+          <h3>Habt ihr noch Fragen?</h3>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="script-drawer" id="scriptDrawer" aria-hidden="true">
+    <div class="script-header">
+      <h2>Sprecher-Skript</h2>
+      <button id="closeScript" type="button" aria-label="Skript schliessen">×</button>
+    </div>
+    <div class="script-content">
+      <article><h3>Folie 1</h3><p><strong>Laila:</strong> Heute sprechen wir über Verkehrsmittel im Alltag.</p><p><strong>Attia:</strong> Wir sehen Probleme und gute Lösungen.</p></article>
+      <article><h3>Folie 2</h3><p><strong>Laila:</strong> Wie kommst du jeden Tag zum Deutschkurs?</p><p><strong>Attia:</strong> Ich fahre meistens mit dem Taxi. Es ist schnell, aber teuer.</p></article>
+      <article><h3>Folie 3</h3><p><strong>Laila:</strong> Wir wiederholen wichtige Wörter.</p><p><strong>Attia:</strong> Man kann mit dem Bus, der U-Bahn, dem Taxi oder dem Fahrrad fahren.</p></article>
+      <article><h3>Folie 4</h3><p><strong>Laila:</strong> Bus und Bahn haben viele Vorteile.</p><p><strong>Attia:</strong> Aber warum fahren nicht alle damit?</p></article>
+      <article><h3>Folie 5</h3><p><strong>Laila:</strong> Das erste Problem ist Stau. Viele Autos stehen lange auf der Straße.</p><p><strong>Attia:</strong> Die Lösung ist: mehr Bus, mehr Bahn und mehr Fahrradwege.</p></article>
+      <article><h3>Folie 6</h3><p><strong>Laila:</strong> Die U-Bahn ist manchmal sehr voll.</p><p><strong>Attia:</strong> Mehr Züge zu Stoßzeiten helfen. Man kann auch früher losfahren.</p></article>
+      <article><h3>Folie 7</h3><p><strong>Laila:</strong> Manchmal kommt der Bus zu spät.</p><p><strong>Attia:</strong> Eine Live-App hilft. Dann sieht man die echte Zeit.</p></article>
+      <article><h3>Folie 8</h3><p><strong>Laila:</strong> Taxi und Auto kosten viel Geld.</p><p><strong>Attia:</strong> Bus, Bahn, Park & Ride und kurze Wege zu Fuß sind günstiger.</p></article>
+      <article><h3>Folie 9</h3><p><strong>Laila:</strong> Viele Autos machen schlechte Luft.</p><p><strong>Attia:</strong> Fahrrad, zu Fuß gehen und Elektrobusse sind besser für die Umwelt.</p></article>
+      <article><h3>Folie 10</h3><p><strong>Laila:</strong> Es gibt Vorteile und Nachteile.</p><p><strong>Attia:</strong> Wir wählen das passende Verkehrsmittel für die Situation.</p></article>
+      <article><h3>Folie 11</h3><p><strong>Laila:</strong> Rechts sehen wir die Probleme.</p><p><strong>Attia:</strong> Links sehen wir die Lösungen.</p></article>
+      <article><h3>Folie 12</h3><p><strong>Laila:</strong> Danke fürs Zuhören.</p><p><strong>Attia:</strong> Habt ihr noch Fragen?</p></article>
+    </div>
+  </aside>
+
+  <section class="print-script" aria-label="Druckversion Sprecher-Skript">
+    <h2>Sprecher-Skript zum Drucken</h2>
+    <p>Laila präsentiert die Probleme. Attia präsentiert die Lösungen. In der Präsentation bleiben diese Notizen versteckt.</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
