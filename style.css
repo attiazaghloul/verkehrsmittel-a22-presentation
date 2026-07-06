@@ -1110,6 +1110,623 @@ h3 {
   }
 }
 
+@media (max-width: 760px) {
+  html,
+  body {
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .deck-shell {
+    min-height: 100dvh;
+    padding: 8px 8px 74px;
+  }
+
+  .presentation {
+    width: calc(100vw - 16px);
+    height: calc(100dvh - 88px);
+    aspect-ratio: auto;
+    border-radius: 22px;
+  }
+
+  .slide {
+    padding: 42px 18px 20px;
+  }
+
+  .problem-slide {
+    padding: 38px 14px 16px;
+  }
+
+  .topbar {
+    top: 12px;
+    left: 18px;
+    right: 18px;
+    font-size: 10px;
+  }
+
+  .topbar::after {
+    bottom: -7px;
+    width: 54px;
+    height: 3px;
+  }
+
+  .deck-controls {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    transform: none;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+  .nav-button {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    font-size: 25px;
+  }
+
+  .progress-wrap {
+    flex: 1;
+    width: auto;
+    min-width: 52px;
+  }
+
+  .script-toggle,
+  .print-button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  .hero-scene {
+    background-position: center;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(90deg, rgba(23, 32, 51, 0.78), rgba(23, 32, 51, 0.32));
+  }
+
+  .title-card,
+  .final-card {
+    width: min(92%, 520px);
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .title-card {
+    margin: 72px auto 0;
+  }
+
+  .final-card {
+    margin: 86px auto 0;
+  }
+
+  .flag-accent {
+    width: 78px;
+    height: 5px;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 10vw, 42px);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(24px, 7vw, 34px);
+    line-height: 1.02;
+  }
+
+  h3 {
+    font-size: clamp(18px, 5.4vw, 24px);
+  }
+
+  .lead,
+  .conclusion,
+  .example-card {
+    font-size: clamp(16px, 4.5vw, 22px);
+  }
+
+  .presenters {
+    margin: 7px 0 12px;
+    padding: 7px 11px;
+    font-size: 14px;
+  }
+
+  .two-column,
+  .split-large,
+  .problem-solution-layout {
+    grid-template-columns: 1fr;
+    height: calc(100% - 76px);
+    gap: 10px;
+  }
+
+  .two-column {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .entry-slide .two-column {
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .entry-slide .scene-card {
+    order: -1;
+    min-height: 230px;
+  }
+
+  .dialogue-stack {
+    gap: 8px;
+    align-content: start;
+  }
+
+  .bubble {
+    padding: 11px 13px;
+    border-radius: 16px 16px 16px 5px;
+    font-size: 14px;
+  }
+
+  .transport-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 10px;
+    max-height: calc(100% - 112px);
+    overflow: hidden;
+  }
+
+  .transport-card {
+    min-height: 68px;
+    gap: 5px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+
+  .icon {
+    transform: scale(0.72);
+  }
+
+  .split-large {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .solution-panel,
+  .problem-panel {
+    gap: 8px;
+    min-height: 0;
+  }
+
+  .question-card {
+    padding: 15px;
+    font-size: 22px;
+  }
+
+  .problem-solution-layout {
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+  }
+
+  .side {
+    min-height: 0;
+    grid-template-rows: auto minmax(76px, 0.78fr) auto;
+    gap: 6px;
+    padding-top: 0;
+  }
+
+  .side-kicker {
+    padding: 5px 9px;
+    font-size: 9px;
+  }
+
+  .problem-side .side-kicker {
+    justify-self: start;
+  }
+
+  .mobility-scene {
+    min-height: 76px;
+    border-radius: 16px;
+  }
+
+  .info-card {
+    padding: 11px 13px;
+    border-radius: 16px;
+  }
+
+  .problem-slide .info-card {
+    padding: 10px 12px;
+  }
+
+  .label {
+    margin-bottom: 6px;
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+
+  .problem-slide .info-card h3,
+  .info-card h3 {
+    margin-bottom: 6px;
+    font-size: 17px;
+  }
+
+  .info-card ul {
+    padding-left: 17px;
+    font-size: 13px;
+    line-height: 1.14;
+  }
+
+  .info-card li + li {
+    margin-top: 4px;
+  }
+
+  .mini-grammar,
+  .mini-humor {
+    margin-top: 6px;
+    font-size: 11px;
+  }
+
+  .compare-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 10px;
+    max-height: calc(100% - 114px);
+    overflow: hidden;
+  }
+
+  .compare-card {
+    min-height: 94px;
+    padding: 9px 8px;
+    border-radius: 15px;
+  }
+
+  .compare-card h3 {
+    margin: 5px 0 3px;
+    font-size: 15px;
+  }
+
+  .compare-card p,
+  .compare-card small {
+    font-size: 11px;
+  }
+
+  .summary-board {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+    max-height: calc(100% - 116px);
+    overflow: hidden;
+  }
+
+  .summary-column {
+    padding: 11px;
+    border-radius: 16px;
+  }
+
+  .summary-column h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  .summary-column p {
+    margin: 4px 0;
+    padding: 6px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .bridge {
+    display: none;
+  }
+
+  .end-hero {
+    background-position: center;
+  }
+}
+
+@media (max-width: 760px) and (orientation: landscape) {
+  .deck-shell {
+    padding: 6px 6px 54px;
+  }
+
+  .presentation {
+    width: min(calc(100vw - 12px), calc((100dvh - 64px) * 16 / 9));
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+  }
+
+  .slide {
+    padding: 34px 34px 24px;
+  }
+
+  .problem-slide {
+    padding: 30px 28px 22px;
+  }
+
+  .deck-controls {
+    left: 50%;
+    right: auto;
+    bottom: 6px;
+    transform: translateX(-50%);
+    width: min(92vw, 620px);
+    padding: 6px;
+  }
+
+  .print-button {
+    display: inline-flex;
+  }
+
+  .title-card {
+    width: 60%;
+    margin: 44px 0 0;
+    padding: 20px 22px;
+  }
+
+  .final-card {
+    width: 64%;
+    margin: 52px 0 0;
+    padding: 20px 22px;
+  }
+
+  .two-column,
+  .split-large,
+  .problem-solution-layout {
+    grid-template-columns: 1fr 1fr;
+    height: calc(100% - 66px);
+  }
+
+  .problem-solution-layout {
+    height: 100%;
+  }
+
+  .entry-slide .scene-card {
+    order: initial;
+    min-height: 0;
+  }
+
+  .transport-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .compare-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .summary-board {
+    grid-template-columns: 1fr 80px 1fr;
+  }
+
+  .bridge {
+    display: grid;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  html,
+  body {
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .deck-shell {
+    min-height: 100dvh;
+    padding: 6px 6px 54px;
+  }
+
+  .presentation {
+    width: min(calc(100vw - 12px), calc((100dvh - 64px) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+  }
+
+  .slide {
+    padding: 32px 32px 22px;
+  }
+
+  .problem-slide {
+    padding: 28px 26px 20px;
+  }
+
+  .deck-controls {
+    left: 50%;
+    right: auto;
+    bottom: 6px;
+    transform: translateX(-50%);
+    width: min(92vw, 620px);
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .nav-button {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    font-size: 25px;
+  }
+
+  .script-toggle,
+  .print-button {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .progress-wrap {
+    flex: 1;
+    width: auto;
+    min-width: 120px;
+  }
+
+  .topbar {
+    top: 12px;
+    left: 22px;
+    right: 22px;
+    font-size: 10px;
+  }
+
+  .title-card,
+  .final-card {
+    width: 58%;
+    padding: 13px 15px;
+    border-radius: 18px;
+  }
+
+  .title-card {
+    margin-top: 30px;
+  }
+
+  .final-card {
+    margin-top: 48px;
+  }
+
+  .flag-accent {
+    width: 66px;
+    height: 4px;
+    margin-bottom: 7px;
+  }
+
+  .eyebrow {
+    margin-bottom: 5px;
+    font-size: 8px;
+  }
+
+  h1 {
+    margin-bottom: 5px;
+    font-size: clamp(26px, 4.2vw, 34px);
+    line-height: 0.96;
+  }
+
+  h2 {
+    margin-bottom: 5px;
+    font-size: clamp(18px, 3vw, 24px);
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: clamp(16px, 2.4vw, 22px);
+  }
+
+  .lead,
+  .conclusion,
+  .example-card {
+    font-size: clamp(11px, 1.8vw, 15px);
+    line-height: 1.14;
+  }
+
+  .presenters {
+    margin: 4px 0 6px;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .two-column,
+  .split-large,
+  .problem-solution-layout {
+    grid-template-columns: 1fr 1fr;
+    height: calc(100% - 62px);
+    gap: 12px;
+  }
+
+  .problem-solution-layout {
+    height: 100%;
+  }
+
+  .dialogue-stack {
+    gap: 8px;
+  }
+
+  .bubble {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .transport-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .transport-card {
+    min-height: 64px;
+    font-size: 12px;
+  }
+
+  .compare-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+    padding: 10px;
+  }
+
+  .compare-card {
+    min-height: 118px;
+    padding: 10px 7px;
+  }
+
+  .summary-board {
+    grid-template-columns: 1fr 76px 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .summary-column {
+    padding: 10px;
+  }
+
+  .summary-column p {
+    margin: 4px 0;
+    padding: 5px 7px;
+    font-size: 11px;
+  }
+
+  .bridge {
+    display: grid;
+  }
+
+  .bridge strong {
+    width: 46px;
+    height: 46px;
+    font-size: 28px;
+  }
+
+  .side {
+    gap: 6px;
+    padding-top: 0;
+  }
+
+  .side-kicker {
+    padding: 5px 9px;
+    font-size: 9px;
+  }
+
+  .mobility-scene {
+    min-height: 86px;
+  }
+
+  .info-card {
+    padding: 10px 12px;
+    border-radius: 15px;
+  }
+
+  .info-card ul {
+    padding-left: 16px;
+    font-size: 12px;
+    line-height: 1.12;
+  }
+
+  .mini-grammar,
+  .mini-humor {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+}
+
 @page {
   size: A4 landscape;
   margin: 0;
