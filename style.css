@@ -432,6 +432,31 @@ h3 {
   font-size: clamp(17px, 1.55vw, 24px);
 }
 
+.transport-card.photo-tile {
+  min-height: 132px;
+  align-content: end;
+  justify-items: start;
+  padding: 14px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background-image:
+    linear-gradient(180deg, rgba(23, 32, 51, 0.02), rgba(23, 32, 51, 0.74)),
+    var(--photo);
+  background-size: cover;
+  background-position: var(--pos, center);
+}
+
+.transport-card.photo-tile strong {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(23, 32, 51, 0.72);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+}
+
 .icon {
   width: 62px;
   height: 42px;
