@@ -963,7 +963,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
+  gap: 14px;
+  padding: 20px 24px;
   border-bottom: 1px solid rgba(23, 32, 51, 0.1);
 }
 
@@ -972,9 +973,45 @@ h3 {
   font-size: 28px;
 }
 
-.script-header button {
+.script-audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.script-audio-controls label {
+  color: rgba(23, 32, 51, 0.66);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.drawer-audio-button,
+.script-audio-controls select {
+  min-height: 34px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--navy);
+  background: var(--solution-light);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.drawer-audio-button {
+  padding: 0 13px;
+  cursor: pointer;
+}
+
+.script-audio-controls select {
+  padding: 0 8px;
+}
+
+.script-header > button {
   width: 38px;
   height: 38px;
+  flex: 0 0 38px;
   border: 0;
   border-radius: 50%;
   background: var(--navy);
@@ -1001,7 +1038,23 @@ h3 {
 
 .script-content p {
   margin: 0 0 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
   line-height: 1.42;
+  cursor: pointer;
+  transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.script-content p:hover,
+.script-content p:focus-visible {
+  outline: none;
+  background: var(--solution-light);
+}
+
+.script-content p.audio-active {
+  background: linear-gradient(135deg, var(--solution-light), #fff);
+  box-shadow: inset 4px 0 0 var(--solution), 0 8px 20px rgba(15, 23, 42, 0.08);
+  transform: translateX(-2px);
 }
 
 .print-script {
@@ -1185,6 +1238,36 @@ h3 {
 
   .print-button {
     display: none;
+  }
+
+  .script-drawer {
+    width: 100vw;
+  }
+
+  .script-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .script-header h2 {
+    font-size: 22px;
+  }
+
+  .script-audio-controls {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .drawer-audio-button {
+    flex: 1;
+  }
+
+  .script-content {
+    height: calc(100dvh - 118px);
+    padding: 14px 16px 34px;
   }
 
   .hero-scene {
