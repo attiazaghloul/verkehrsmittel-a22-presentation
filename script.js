@@ -10,9 +10,10 @@ const audioBtn = document.getElementById("audioBtn");
 
 let currentSlide = 0;
 let currentStep = 0;
-let voices = [];
+let audioManifest = [];
 let isAudioPlaying = false;
 let audioRunId = 0;
+let activeAudio = null;
 
 document.querySelectorAll("[data-image-ref]").forEach((element) => {
   const imageRef = element.getAttribute("data-image-ref");
@@ -84,66 +85,6 @@ function closeScriptDrawer() {
   scriptToggle.setAttribute("aria-expanded", "false");
 }
 
-function loadVoices() {
-  if (!("speechSynthesis" in window)) return [];
-  voices = window.speechSynthesis.getVoices();
-  return voices;
-}
-
-function getGermanVoices() {
-  const allVoices = voices.length ? voices : loadVoices();
-  return allVoices.filter((voice) => {
-    const lang = voice.lang || "";
-    const name = voice.name || "";
-    return /^de([-_]|$)/i.test(lang) || /deutsch|german/i.test(name);
-  });
-}
-
-function scoreVoice(voice, speaker) {
-  const name = (voice.name || "").toLowerCase();
-  const lang = (voice.lang || "").toLowerCase();
-  const femaleHints = ["katja", "hedda", "anna", "vicki", "marlene", "female", "frau"];
-  const maleHints = ["conrad", "stefan", "klaus", "male", "mann"];
-  const speakerHints = speaker === "Attia" ? maleHints : femaleHints;
-  let score = 0;
-
-  if (lang === "de-de") score += 80;
-  if (lang.startsWith("de")) score += 40;
-  if (/natural|neural|online/.test(name)) score += 28;
-  if (/microsoft/.test(name)) score += 18;
-  if (/google/.test(name)) score += 12;
-  if (speakerHints.some((hint) => name.includes(hint))) score += 80;
-  if (/deutsch|german/.test(name)) score += 20;
-
-  return score;
-}
-
-function chooseVoice(speaker) {
-  const germanVoices = getGermanVoices();
-  if (!germanVoices.length) return null;
-  return germanVoices
-    .slice()
-    .sort((a, b) => scoreVoice(b, speaker) - scoreVoice(a, speaker))[0];
-}
-
-function getCurrentScriptLines() {
-  const articles = Array.from(document.querySelectorAll(".script-content article"));
-  const article = articles[currentSlide];
-  if (!article) return [];
-
-  return Array.from(article.querySelectorAll("p"))
-    .map((paragraph) => {
-      const text = paragraph.textContent.trim();
-      const speakerMatch = text.match(/^(Laila|Attia):\s*(.+)$/);
-      if (!speakerMatch) return null;
-      return {
-        speaker: speakerMatch[1],
-        text: speakerMatch[2],
-      };
-    })
-    .filter(Boolean);
-}
-
 function updateAudioButton(playing) {
   if (!audioBtn) return;
   audioBtn.textContent = playing ? "Stop" : "Audio";
@@ -151,59 +92,70 @@ function updateAudioButton(playing) {
 }
 
 function stopAudio() {
-  if (!("speechSynthesis" in window)) return;
   audioRunId += 1;
   isAudioPlaying = false;
-  window.speechSynthesis.cancel();
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+    activeAudio = null;
+  }
   updateAudioButton(false);
 }
 
-function speakLines(lines, index, runId) {
+function getCurrentAudioLines() {
+  return audioManifest[currentSlide] || [];
+}
+
+function playAudioLines(lines, index, runId) {
   if (!isAudioPlaying || runId !== audioRunId) return;
   if (index >= lines.length) {
     isAudioPlaying = false;
+    activeAudio = null;
     updateAudioButton(false);
     return;
   }
 
   const line = lines[index];
-  const utterance = new SpeechSynthesisUtterance(line.text);
-  utterance.lang = "de-DE";
-  utterance.voice = chooseVoice(line.speaker);
-  utterance.rate = line.speaker === "Attia" ? 0.9 : 0.94;
-  utterance.pitch = line.speaker === "Attia" ? 0.86 : 1.08;
-  utterance.volume = 1;
-
-  utterance.onend = () => speakLines(lines, index + 1, runId);
-  utterance.onerror = () => speakLines(lines, index + 1, runId);
-  window.speechSynthesis.speak(utterance);
+  activeAudio = new Audio(line.src);
+  activeAudio.preload = "auto";
+  activeAudio.onended = () => playAudioLines(lines, index + 1, runId);
+  activeAudio.onerror = () => playAudioLines(lines, index + 1, runId);
+  activeAudio.play().catch(() => {
+    isAudioPlaying = false;
+    updateAudioButton(false);
+    alert("Audio konnte nicht gestartet werden. Bitte tippe noch einmal auf Audio.");
+  });
 }
 
 function playCurrentScriptAudio() {
-  if (!("speechSynthesis" in window)) {
-    alert("Audio wird in diesem Browser leider nicht unterstützt.");
-    return;
-  }
-
   if (isAudioPlaying) {
     stopAudio();
     return;
   }
 
-  const lines = getCurrentScriptLines();
-  if (!lines.length) return;
+  const lines = getCurrentAudioLines();
+  if (!lines.length) {
+    alert("Audio-Dateien werden noch geladen. Bitte versuche es gleich noch einmal.");
+    return;
+  }
 
-  loadVoices();
   audioRunId += 1;
   isAudioPlaying = true;
   updateAudioButton(true);
-  speakLines(lines, 0, audioRunId);
+  playAudioLines(lines, 0, audioRunId);
 }
 
-if ("speechSynthesis" in window) {
-  loadVoices();
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-}
+fetch("assets/audio/script-audio.json?v=audio-files-20260707")
+  .then((response) => response.json())
+  .then((manifest) => {
+    audioManifest = manifest;
+  })
+  .catch(() => {
+    if (audioBtn) {
+      audioBtn.disabled = true;
+      audioBtn.textContent = "No Audio";
+    }
+  });
 
 nextBtn.addEventListener("click", next);
 prevBtn.addEventListener("click", prev);

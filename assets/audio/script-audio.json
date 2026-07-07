@@ -1,0 +1,151 @@
+[
+  [
+    {
+      "speaker": "Laila",
+      "text": "Hallo! Heute sprechen wir über Verkehrsmittel im Alltag. Wie kommen wir jeden Tag zum Deutschkurs, zur Arbeit oder nach Hause?",
+      "src": "assets/audio/slide01-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Laila zeigt euch die Probleme. Ich zeige euch die Lösungen. Los geht's!",
+      "src": "assets/audio/slide01-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Attia, wie kommst du jeden Tag zum Deutschkurs?",
+      "src": "assets/audio/slide02-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Ich fahre meistens mit dem Taxi, weil es schnell und bequem ist. Aber es ist teuer.",
+      "src": "assets/audio/slide02-02-attia.mp3"
+    },
+    {
+      "speaker": "Laila",
+      "text": "Ich nehme oft den Bus. Er ist günstiger, aber manchmal verspätet.",
+      "src": "assets/audio/slide02-03-laila.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "text": "Hier sind die wichtigsten Verkehrsmittel: der Bus, die U-Bahn, die Straßenbahn, der Zug, das Auto, das Taxi, das Fahrrad – und zu Fuß gehen.",
+      "src": "assets/audio/slide03-01-attia.mp3"
+    },
+    {
+      "speaker": "Laila",
+      "text": "Merkt euch den Satz: Ich fahre oft mit dem Taxi, weil es schnell ist.",
+      "src": "assets/audio/slide03-02-laila.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "text": "Öffentliche Verkehrsmittel sind günstig, praktisch und besser für die Umwelt. Man braucht keinen Parkplatz.",
+      "src": "assets/audio/slide04-01-attia.mp3"
+    },
+    {
+      "speaker": "Laila",
+      "text": "Aber warum fahren nicht alle mit Bus und Bahn? Es gibt Probleme! Schauen wir sie an.",
+      "src": "assets/audio/slide04-02-laila.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Problem Nummer eins: der Stau. Es gibt viel Verkehr. Viele Autos und Taxis stehen im Stau. Man kommt zu spät.",
+      "src": "assets/audio/slide05-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösung: Wir können mehr Bus und Bahn benutzen. Die Stadt kann mehr Fahrradwege bauen. Und man kann Fahrgemeinschaften machen. Deshalb brauchen wir gute Lösungen.",
+      "src": "assets/audio/slide05-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Problem Nummer zwei: Die U-Bahn ist voll. Man findet keinen Sitzplatz. Das ist laut und unbequem.",
+      "src": "assets/audio/slide06-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösung: mehr Züge zu Stoßzeiten und bessere Fahrpläne. Man kann auch früher losfahren. Trotzdem ist die U-Bahn schnell!",
+      "src": "assets/audio/slide06-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Problem Nummer drei: Der Bus kommt zu spät. Der Fahrplan stimmt nicht immer. Man wartet lange – auch bei Regen!",
+      "src": "assets/audio/slide07-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösung: Wenn der Bus verspätet ist, kann man eine Live-App benutzen. Man sollte früher losgehen. Und die Stadt muss mehr Busse einsetzen.",
+      "src": "assets/audio/slide07-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Problem Nummer vier: Das Taxi ist teuer. Parkplätze sind auch teuer, und man sucht lange.",
+      "src": "assets/audio/slide08-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösung: Bus oder Bahn nehmen. Man kann Park und Ride benutzen. Und kurze Wege kann man zu Fuß gehen – die Füße sind kostenlos und brauchen kein Benzin!",
+      "src": "assets/audio/slide08-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Problem Nummer fünf: Viele Autos machen schlechte Luft. Die Stadt wird laut. Das ist schlecht für Menschen und Natur.",
+      "src": "assets/audio/slide09-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösung: Fahrrad fahren, zu Fuß gehen, Elektrobusse benutzen. Ich fahre Fahrrad, weil es gesund und umweltfreundlich ist.",
+      "src": "assets/audio/slide09-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "text": "Was passt zu mir? Das Taxi ist schnell und bequem, aber teuer. Die U-Bahn ist schnell und günstig, aber manchmal voll.",
+      "src": "assets/audio/slide10-01-attia.mp3"
+    },
+    {
+      "speaker": "Laila",
+      "text": "Das Auto ist bequem und flexibel, aber teuer. Das Fahrrad ist gesund und billig, aber schlecht bei Regen. Zu Fuß ist kostenlos und gesund, aber langsam. Es gibt nicht das perfekte Verkehrsmittel für alle Situationen.",
+      "src": "assets/audio/slide10-02-laila.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Die Probleme: Stau, volle U-Bahn, Verspätung, hohe Kosten und schlechte Luft.",
+      "src": "assets/audio/slide11-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Die Lösungen: Bus und Bahn, mehr Züge und Busse, eine Live-App, Park und Ride, Fahrrad und Elektrobusse. Wir wählen das passende Verkehrsmittel für die passende Situation.",
+      "src": "assets/audio/slide11-02-attia.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Laila",
+      "text": "Jedes Verkehrsmittel hat Vorteile und Nachteile.",
+      "src": "assets/audio/slide12-01-laila.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "text": "Wichtig ist: sichere, günstige und umweltfreundliche Lösungen. Danke fürs Zuhören! Habt ihr noch Fragen?",
+      "src": "assets/audio/slide12-02-attia.mp3"
+    }
+  ]
+]
