@@ -138,6 +138,7 @@ button {
 }
 
 .nav-button,
+.audio-button,
 .script-toggle,
 .print-button {
   border: 0;
@@ -157,6 +158,7 @@ button {
   line-height: 1;
 }
 
+.audio-button,
 .script-toggle,
 .print-button {
   min-height: 38px;
@@ -1174,9 +1176,10 @@ h3 {
   }
 
   .script-toggle,
+  .audio-button,
   .print-button {
     min-height: 34px;
-    padding: 0 10px;
+    padding: 0 9px;
     font-size: 11px;
   }
 
@@ -1552,6 +1555,7 @@ h3 {
   }
 
   .script-toggle,
+  .audio-button,
   .print-button {
     min-height: 34px;
     padding: 0 12px;
