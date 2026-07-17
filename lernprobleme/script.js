@@ -12,13 +12,14 @@ const fullscreenBtn = document.getElementById("fullscreenBtn");
 const printBtn = document.getElementById("printBtn");
 const scriptArticles = Array.from(document.querySelectorAll("[data-script-slide]"));
 const scriptLines = Array.from(document.querySelectorAll(".script-content article p"));
+const audioPlayer = new Audio();
 
 let currentSlide = 0;
 let currentStep = 0;
 let audioRun = 0;
 let speaking = false;
 let activeSpeechButton = null;
-let activeAudio = null;
+let activeAudio = audioPlayer;
 let audioManifest = [];
 let slideAudioLines = [];
 let allAudioLines = [];
@@ -105,12 +106,11 @@ function stopSpeech() {
   audioRun += 1;
   speaking = false;
   activeSpeechButton = null;
-  if (activeAudio) {
-    activeAudio.pause();
-    activeAudio.removeAttribute("src");
-    activeAudio.load();
-    activeAudio = null;
-  }
+  activeAudio.pause();
+  activeAudio.onended = null;
+  activeAudio.onerror = null;
+  activeAudio.removeAttribute("src");
+  activeAudio.load();
   clearActiveSpeechLine();
   updateSpeechButtons();
 }
@@ -127,10 +127,10 @@ async function playLines(lines, index, runId) {
   line.classList.add("audio-active");
   if (scriptDrawer.classList.contains("open")) line.scrollIntoView({ block: "center", behavior: "smooth" });
 
-  activeAudio = new Audio(lines[index].src);
+  activeAudio.src = lines[index].src;
   activeAudio.playbackRate = Number(audioSpeed.value || ".95");
-  activeAudio.addEventListener("ended", () => playLines(lines, index + 1, runId), { once: true });
-  activeAudio.addEventListener("error", () => playLines(lines, index + 1, runId), { once: true });
+  activeAudio.onended = () => playLines(lines, index + 1, runId);
+  activeAudio.onerror = () => playLines(lines, index + 1, runId);
   try {
     await activeAudio.play();
   } catch {
