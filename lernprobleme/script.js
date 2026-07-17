@@ -15,9 +15,13 @@ const scriptLines = Array.from(document.querySelectorAll(".script-content articl
 
 let currentSlide = 0;
 let currentStep = 0;
-let speechRun = 0;
+let audioRun = 0;
 let speaking = false;
 let activeSpeechButton = null;
+let activeAudio = null;
+let audioManifest = [];
+let slideAudioLines = [];
+let allAudioLines = [];
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -87,17 +91,6 @@ function closeScriptDrawer() {
   scriptToggle.textContent = "Skript zeigen";
 }
 
-function cleanSpeechText(line) {
-  return line.textContent.replace(/^(Attia|Abdullah):\s*/, "").trim();
-}
-
-function getGermanVoice() {
-  const voices = speechSynthesis.getVoices();
-  return voices.find((voice) => voice.lang.toLowerCase() === "de-de")
-    || voices.find((voice) => voice.lang.toLowerCase().startsWith("de"))
-    || null;
-}
-
 function clearActiveSpeechLine() {
   scriptLines.forEach((line) => line.classList.remove("audio-active"));
 }
@@ -109,57 +102,85 @@ function updateSpeechButtons() {
 }
 
 function stopSpeech() {
-  speechRun += 1;
+  audioRun += 1;
   speaking = false;
   activeSpeechButton = null;
-  speechSynthesis.cancel();
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.removeAttribute("src");
+    activeAudio.load();
+    activeAudio = null;
+  }
   clearActiveSpeechLine();
   updateSpeechButtons();
 }
 
-function speakLines(lines, index, runId) {
-  if (!speaking || runId !== speechRun) return;
+async function playLines(lines, index, runId) {
+  if (!speaking || runId !== audioRun) return;
   if (index >= lines.length) {
     stopSpeech();
     return;
   }
 
-  const line = lines[index];
+  const line = lines[index].element;
   clearActiveSpeechLine();
   line.classList.add("audio-active");
   if (scriptDrawer.classList.contains("open")) line.scrollIntoView({ block: "center", behavior: "smooth" });
 
-  const utterance = new SpeechSynthesisUtterance(cleanSpeechText(line));
-  utterance.lang = "de-DE";
-  utterance.rate = Number(audioSpeed.value || ".95");
-  utterance.pitch = line.textContent.trim().startsWith("Abdullah:") ? .92 : 1.02;
-  const voice = getGermanVoice();
-  if (voice) utterance.voice = voice;
-  utterance.onend = () => speakLines(lines, index + 1, runId);
-  utterance.onerror = () => speakLines(lines, index + 1, runId);
-  speechSynthesis.speak(utterance);
+  activeAudio = new Audio(lines[index].src);
+  activeAudio.playbackRate = Number(audioSpeed.value || ".95");
+  activeAudio.addEventListener("ended", () => playLines(lines, index + 1, runId), { once: true });
+  activeAudio.addEventListener("error", () => playLines(lines, index + 1, runId), { once: true });
+  try {
+    await activeAudio.play();
+  } catch {
+    if (runId === audioRun) stopSpeech();
+  }
 }
 
 function startSpeech(lines, button) {
-  if (!window.speechSynthesis || !lines.length) return;
+  if (!lines.length) return;
   stopSpeech();
-  speechRun += 1;
-  const runId = speechRun;
+  audioRun += 1;
+  const runId = audioRun;
   speaking = true;
   activeSpeechButton = button;
   updateSpeechButtons();
-  speakLines(lines, 0, runId);
+  playLines(lines, 0, runId);
 }
 
 function toggleCurrentSlideSpeech() {
   if (speaking && activeSpeechButton === audioBtn) return stopSpeech();
-  const article = scriptArticles[currentSlide];
-  startSpeech(Array.from(article.querySelectorAll("p")), audioBtn);
+  startSpeech(slideAudioLines[currentSlide] || [], audioBtn);
 }
 
 function toggleFullSpeech() {
   if (speaking && activeSpeechButton === drawerAudioBtn) return stopSpeech();
-  startSpeech(scriptLines, drawerAudioBtn);
+  startSpeech(allAudioLines, drawerAudioBtn);
+}
+
+async function loadAudioManifest() {
+  audioBtn.disabled = true;
+  drawerAudioBtn.disabled = true;
+  try {
+    const response = await fetch("assets/audio/script-audio.json?v=2");
+    if (!response.ok) throw new Error("Audiodateien konnten nicht geladen werden.");
+    audioManifest = await response.json();
+    let lineIndex = 0;
+    slideAudioLines = audioManifest.map((slide) => slide.map((entry) => ({
+      ...entry,
+      element: scriptLines[lineIndex++],
+    })));
+    allAudioLines = slideAudioLines.flat();
+    if (lineIndex !== scriptLines.length || allAudioLines.some((line) => !line.element)) {
+      throw new Error("Skript und Audiodateien passen nicht zusammen.");
+    }
+    audioBtn.disabled = false;
+    drawerAudioBtn.disabled = false;
+  } catch (error) {
+    audioBtn.title = error.message;
+    drawerAudioBtn.title = error.message;
+  }
 }
 
 function toggleFullscreen() {
@@ -171,6 +192,9 @@ prevBtn.addEventListener("click", previous);
 nextBtn.addEventListener("click", next);
 audioBtn.addEventListener("click", toggleCurrentSlideSpeech);
 drawerAudioBtn.addEventListener("click", toggleFullSpeech);
+audioSpeed.addEventListener("change", () => {
+  if (activeAudio) activeAudio.playbackRate = Number(audioSpeed.value || ".95");
+});
 scriptToggle.addEventListener("click", () => scriptDrawer.classList.contains("open") ? closeScriptDrawer() : openScriptDrawer());
 closeScript.addEventListener("click", closeScriptDrawer);
 fullscreenBtn.addEventListener("click", toggleFullscreen);
@@ -180,7 +204,7 @@ scriptLines.forEach((line, index) => {
   line.tabIndex = 0;
   line.setAttribute("role", "button");
   line.setAttribute("title", "Ab hier vorlesen");
-  const playFromHere = () => startSpeech(scriptLines.slice(index), drawerAudioBtn);
+  const playFromHere = () => startSpeech(allAudioLines.slice(index), drawerAudioBtn);
   line.addEventListener("click", playFromHere);
   line.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -229,5 +253,5 @@ window.addEventListener("hashchange", () => {
 
 const initialMatch = location.hash.match(/folie-(\d+)/);
 if (initialMatch) currentSlide = Math.min(slides.length - 1, Math.max(0, Number(initialMatch[1]) - 1));
-speechSynthesis?.getVoices();
 updateSlide();
+loadAudioManifest();

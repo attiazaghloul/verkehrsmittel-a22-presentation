@@ -1,0 +1,164 @@
+[
+  [
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide00-line01.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide00-line02.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide00-line03.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide01-line01.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide01-line02.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide01-line03.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide01-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide02-line01.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide02-line02.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide02-line03.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide02-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide03-line01.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide03-line02.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide03-line03.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide03-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide04-line01.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide04-line02.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide04-line03.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide04-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide05-line01.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide05-line02.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide05-line03.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide05-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide06-line01.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide06-line02.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide06-line03.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide06-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide07-line01.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide07-line02.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide07-line03.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide07-line04.mp3"
+    }
+  ],
+  [
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide08-line01.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide08-line02.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide08-line03.mp3"
+    },
+    {
+      "speaker": "Abdullah",
+      "src": "assets/audio/slide08-line04.mp3"
+    },
+    {
+      "speaker": "Attia",
+      "src": "assets/audio/slide08-line05.mp3"
+    }
+  ]
+]
